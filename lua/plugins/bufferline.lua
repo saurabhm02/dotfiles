@@ -1,11 +1,24 @@
 return {
   "akinsho/bufferline.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  version = "*",
-  opts = {
+  version = "*", 
+  config  = function()
+    require("bufferline").setup {
     options = {
-      mode = "tabs",
-      separator_style = "slant",
+        mode = 'buffers',
+        -- diagnostics = 'coc',
+        offsets = {
+            {
+                filetype = "neo-tree",
+                text = "File Explorer",
+                highlight = "Directory",
+                separator = true,
+            }
+        },
+        -- bufferline
+      vim.keymap.set('n', '<leader>bl', ':BufferLinePick<CR>')
     },
-  },
+}
+  end
+
 }
